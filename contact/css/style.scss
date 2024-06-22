@@ -1,0 +1,560 @@
+@charset "utf-8";
+
+@use "../../css/common";
+
+// レスポンシブ対応
+// ブレイクポイント
+$mb: 767px;
+$tb: 834px;
+$md: 990px;
+$anm: 1100px;
+// @mediaのフォーマット
+@mixin mobile {
+  @media screen and (max-width: $mb) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: $tb) {
+    @content;
+  }
+}
+@mixin middle {
+  @media screen and (max-width: $md) {
+    @content;
+  }
+}
+@mixin animation {
+  @media screen and (max-width: $anm) {
+    @content;
+  }
+}
+
+// フォント
+$font-italiana: "Italiana", serif;
+$font-cambay: "Cambay", sans-serif;
+
+h2 {
+  font-size: 30px;
+  letter-spacing: 0.1em;
+  font-family: $font-italiana;
+  font-weight: normal;
+}
+
+.menu {
+  font-family: $font-italiana;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.contact,
+.totop {
+  width: 73%;
+  margin: 0 auto;
+  @include mobile {
+    width: 83%;
+  }
+}
+
+header {
+  position: relative;
+  .first_header {
+    display: flex;
+    align-items: center;
+    @include mobile {
+    }
+  }
+  .header_wrap {
+    position: absolute;
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    @include mobile {
+      padding: 15px;
+    }
+    .emiuno_logo {
+      width: 58px;
+      @include mobile {
+        width: 50px;
+      }
+    }
+  }
+  .header_img {
+    width: 100%;
+    display: block;
+    @include mobile {
+      display: none;
+    }
+  }
+  .header_img_sp {
+    display: none;
+    @include mobile {
+      display: block;
+      width: 100%;
+      height: 52px;
+    }
+  }
+}
+
+.form_wrap {
+  display: flex;
+  justify-content: space-between;
+  @include tablet {
+    display: block;
+    margin-bottom: 250px;
+  }
+}
+.contact {
+  opacity: 0;
+  transition: opacity 3s, transform 3s;
+}
+.js-in.active {
+  opacity: 1;
+}
+.contact_title {
+  display: flex;
+  align-items: center;
+  margin-left: -12%;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  @include tablet {
+    margin-left: -5%;
+  }
+  .title {
+    padding-left: 10px;
+  }
+  .title_shape {
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid #012f4e;
+    border-right: 1px solid #012f4e;
+    transform: translate(-50%, 0) rotate(45deg);
+  }
+}
+
+.form_lead {
+  width: 40%;
+  font-size: 15px;
+  @include tablet {
+    width: 100%;
+    font-size: 14px;
+    padding-bottom: 80px;
+    text-align: center;
+    margin: 10px;
+  }
+  .lead_text,
+  .lead_text2 {
+    line-height: 1.74;
+  }
+  .lead_text2 {
+    @include tablet {
+      display: none;
+    }
+  }
+  .mailaddress {
+    display: flex;
+    padding-top: 90px;
+    padding-bottom: 10px;
+    transition: transform 0.5s;
+    &:hover {
+      transform: translateY(-5px);
+    }
+    @include tablet {
+      display: none;
+    }
+    img {
+      width: 18px;
+      padding-right: 10px;
+      @include tablet {
+        display: none;
+      }
+    }
+    address {
+      font-style: normal;
+      color: #012f4e;
+    }
+  }
+}
+
+.form_lead_sp {
+  display: none;
+  @include tablet {
+    display: block;
+    width: 100%;
+    font-size: 13px;
+    padding-bottom: 80px;
+    text-align: center;
+    margin: 10px;
+  }
+
+  .lead_text2 {
+    line-height: 1.74;
+  }
+  .mailaddress {
+    display: flex;
+    justify-content: center;
+    padding-top: 90px;
+    padding-bottom: 10px;
+    img {
+      width: 18px;
+      padding-right: 10px;
+    }
+    address {
+      font-style: normal;
+    }
+  }
+}
+.success_msg {
+  display: none;
+  position: fixed;
+  width: 300px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #012f4e99;
+  color: #faede8;
+  top: 200px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.form {
+  width: 42%;
+  @include tablet {
+    width: 95%;
+  }
+  .question {
+    font-size: 15px;
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    padding-bottom: 15px;
+    align-items: center;
+    margin-left: -30px;
+    @include tablet {
+      margin-left: 0px;
+    }
+  }
+  .question::before {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 1px solid #012f4e;
+  }
+  .question::after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    transform: translateY(-50%);
+    left: 11px;
+    width: 9px;
+    height: 1px;
+    background: #012f4e;
+  }
+  .answerbox {
+    display: block;
+    width: 100%;
+    height: 36px;
+    color: #012f4e;
+    padding: 10px;
+    background: #faede8;
+    border: none;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+  }
+  textarea {
+    width: 100%;
+    height: 290px;
+    color: #012f4e;
+    padding: 10px;
+    background: #faede8;
+    border: none;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+  }
+  button {
+    width: 76px;
+    height: 42px;
+    background: #faede8;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: 0;
+    margin-bottom: 140px;
+    filter: drop-shadow(-5px 5px 0px rgba(85, 86, 86, 0.3));
+    transition: all 0.2s ease;
+    @include tablet {
+      margin-bottom: 60px;
+      color: #012f4e;
+    }
+  }
+  button:hover {
+    border-color: transparent;
+    filter: none;
+    background: #faede8;
+    transform: translate(-5px, 5px);
+  }
+}
+
+// チェックボックス
+.form_checkmark {
+  display: block;
+  position: relative;
+  margin-top: 10px;
+  padding-left: 28px;
+  margin-bottom: 70px;
+}
+
+.form_checkmark input {
+  display: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 13px;
+  width: 13px;
+  border: solid 1px #012f4e;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  &:after {
+    content: "";
+    position: absolute;
+    border: solid #faede8;
+    border-width: 0 2px 2px 0;
+    left: 3px;
+    top: 0px;
+    width: 3px;
+    height: 6px;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+}
+.form_checkmark {
+  input:checked + .checkmark {
+    background: #012f4e;
+    border-color: #012f4e;
+  }
+
+  input:checked + .checkmark:after {
+    opacity: 1;
+  }
+}
+
+// プレイスホルダー
+textarea::placeholder {
+  color: #012f4e;
+  opacity: 0.5;
+}
+
+.totop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: -8px;
+  @include middle {
+    margin-bottom: -6px;
+  }
+  @include tablet {
+    margin-bottom: -5px;
+  }
+  @include mobile {
+    display: block;
+    margin-bottom: 0px;
+    position: relative;
+  }
+  .hope {
+    font-family: $font-italiana;
+    letter-spacing: 0.1em;
+    font-size: 50px;
+    margin-left: -37%;
+    color: #012f4e;
+    @include animation {
+      font-size: 41px;
+    }
+    @include middle {
+      font-size: 36px;
+    }
+    @include tablet {
+      font-size: 33px;
+    }
+    @include mobile {
+      width: 317px;
+      font-size: 30px;
+      letter-spacing: 0.07em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding-bottom: 350px;
+      margin-left: 0px;
+    }
+  }
+  .arrow {
+    width: 30px;
+    margin-left: 0px;
+    animation: arrowmove 1.6s ease-out infinite;
+    @keyframes arrowmove {
+      0% {
+        transform: translateX(0px);
+      }
+      100% {
+        transform: translateX(200px);
+      }
+    }
+    @include animation {
+      margin-left: 0px;
+      animation: arrowmove 1.6s ease-out infinite;
+      @keyframes arrowmove {
+        0% {
+          transform: translateX(0px);
+        }
+        100% {
+          transform: translateX(160px);
+        }
+      }
+    }
+    @include tablet {
+      width: 25px;
+    }
+    @include mobile {
+      display: none;
+    }
+  }
+  .arrow_sp {
+    display: none;
+    @include mobile {
+      display: block;
+      width: 30px;
+      margin-left: 0px;
+      animation: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding-bottom: 150px;
+    }
+  }
+  .contact_btn {
+    position: relative;
+    right: -20vw;
+    bottom: -70px;
+    width: 200px;
+    height: 200px;
+    padding: 15px;
+    border-radius: 50%;
+    background: linear-gradient(
+      #345971 0%,
+      #012f4e 25%,
+      #345971 50%,
+      #012f4e78 100%
+    );
+    background-position: 1% 50%;
+    background-size: auto 200%;
+    box-sizing: border-box;
+    cursor: pointer;
+    @include animation {
+      width: 175px;
+      height: 175px;
+    }
+    @include tablet {
+      width: 150px;
+      height: 150px;
+    }
+    @include mobile {
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      bottom: -99px;
+    }
+    .btn_border {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: #ffffff 1px solid;
+      box-sizing: border-box;
+    }
+    .btn_text {
+      display: inline;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffffff;
+      .btn_text_en {
+        font-family: $font-cambay;
+        font-size: 22px;
+        @include animation {
+          font-size: 18px;
+        }
+      }
+      @include animation {
+        font-size: 14px;
+      }
+    }
+  }
+}
+.contact_btn:hover {
+  background-position: 100% 0;
+}
+
+// サンクスページ
+.thanks_wrap {
+  text-align: center;
+  margin-bottom: 80px;
+  @include mobile {
+    width: 108%;
+    margin-left: -4%;
+    margin-bottom: 250px;
+  }
+  .bluerose {
+    width: 60px;
+    margin-bottom: 70px;
+  }
+  p {
+    font-size: 15px;
+    line-height: 1.73;
+    align-items: center;
+    margin-bottom: 40px;
+    @include mobile {
+      font-size: 14px;
+    }
+    span {
+      @include mobile {
+        display: inline-block;
+      }
+    }
+  }
+  .mailaddress {
+    transition: transform 0.5s;
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+  .mail_icon {
+    width: 2%;
+    margin-bottom: 20px;
+    @include mobile {
+      width: 6%;
+    }
+  }
+  address {
+    font-style: normal;
+  }
+}

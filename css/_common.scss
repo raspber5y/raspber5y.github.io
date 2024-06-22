@@ -1,0 +1,337 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Italiana&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cambay:ital,wght@0,400;0,700;1,400;1,700&family=Italiana&display=swap");
+
+// レスポンシブ対応
+// ブレイクポイント
+$mb: 767px;
+$tb: 834px;
+$md: 990px;
+$anm: 1100px;
+// @mediaのフォーマット
+@mixin mobile {
+  @media screen and (max-width: $mb) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: $tb) {
+    @content;
+  }
+}
+@mixin middle {
+  @media screen and (max-width: $md) {
+    @content;
+  }
+}
+@mixin animation {
+  @media screen and (max-width: $anm) {
+    @content;
+  }
+}
+// フォント
+$font-italiana: "Italiana", serif;
+$font-cambay: "Cambay", sans-serif;
+
+/* cssリセット */
+/*利用するタグによってこちらの内容は増やす*/
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+dl,
+dt,
+dd,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  /*デフォルトの文字色、font-familyを予め当てておく*/
+  color: #012f4e;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ",
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+  font-feature-settings: "palt";
+}
+
+a {
+  /*下線を消す*/
+  text-decoration: none;
+  /*色を消す*/
+  color: inherit;
+  transition: 0.3s;
+}
+
+ul {
+  /*左の「・」を消す*/
+  list-style: none;
+}
+
+main {
+  background: linear-gradient(to bottom, #f7e3da, #dab4b4);
+}
+
+// ハンバーガーメニュー
+.pc_nav {
+  display: none;
+  position: fixed;
+  background: rgba(1, 47, 78, 0.8);
+  width: 100%;
+  height: 100vh;
+  padding-left: 13%;
+  padding-top: 150px;
+  z-index: 98;
+  @include mobile {
+    padding-top: 120px;
+  }
+  .menu {
+    width: 40px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #ffffff;
+    margin-bottom: 100px;
+  }
+  ul .menu_btn {
+    display: flex;
+    align-items: center;
+    font-family: $font-cambay;
+    font-size: 27px;
+    color: #ffffff;
+    position: relative;
+    margin-bottom: 60px;
+    padding-left: 40px;
+    height: 30px;
+    cursor: pointer;
+    transition: none;
+    @include mobile {
+      margin-bottom: 36px;
+      font-size: 22px;
+    }
+  }
+  ul .menu_btn::before {
+    content: "";
+    position: absolute;
+    top: 42%;
+    left: 0px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    @include mobile {
+      width: 17px;
+      height: 17px;
+    }
+  }
+  ul .menu_btn::after {
+    content: "";
+    position: absolute;
+    top: 42%;
+    left: 15px;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 2px;
+    background: #ffffff;
+    transition: 0.3s;
+    @include mobile {
+      width: 12px;
+    }
+  }
+  ul .menu_btn:hover::after {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+    left: 7px;
+    @include mobile {
+      left: 6px;
+    }
+  }
+  ul .menu_btn.ja {
+    font-size: 20px;
+  }
+}
+
+.pc_btn {
+  font-family: $font-cambay;
+  font-size: 30px;
+  color: #ffffff;
+  position: relative;
+  padding-right: 40px;
+  z-index: 99;
+  cursor: pointer;
+  @include mobile {
+    font-size: 24px;
+  }
+}
+.pc_btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  @include mobile {
+    width: 17px;
+    height: 17px;
+  }
+}
+.pc_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  width: 15px;
+  height: 2px;
+  background: #ffffff;
+  transition: 0.3s;
+  @include mobile {
+    width: 12px;
+  }
+}
+.pc_btn:hover::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  right: 7px;
+  @include mobile {
+    right: 5.5px;
+  }
+}
+.first_header .pc_btn.open {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  right: 20px;
+}
+.first_header .pc_btn.open.is_active {
+  opacity: 0;
+}
+.pc_btn.open::before {
+  border-radius: 0%;
+  top: 12px;
+  width: 25px;
+  right: 0px;
+  height: 0px;
+  transform: rotate(45deg);
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  @include mobile {
+    width: 20px;
+    top: 8px;
+  }
+}
+.pc_btn.open::after {
+  border-radius: 0%;
+  width: 25px;
+  height: 0px;
+  top: 12px;
+  right: 0px;
+  border: 1px solid #ffffff;
+  transform: rotate(135deg);
+  @include mobile {
+    width: 20px;
+    top: 8px;
+  }
+}
+
+// フッター
+.footer {
+  height: 322px;
+  background: linear-gradient(to bottom, #f7e3da, #dab4b4);
+  padding-top: 100px;
+  padding-left: 7%;
+  @include mobile {
+    height: 380px;
+    padding-top: 150px;
+  }
+}
+
+.footer .footer_btn {
+  font-family: $font-cambay;
+  font-size: 26px;
+  color: #012f4e;
+  position: relative;
+  margin-right: 100px;
+  padding-left: 40px;
+  padding-top: 6px;
+  transition: none;
+  display: inline-block;
+  width: 80px;
+  &:last-child {
+    width: 120px;
+  }
+  @include middle {
+    display: block;
+    font-size: 20px;
+    margin-right: 0px;
+    padding-left: 40px;
+    margin-bottom: 30px;
+    padding-top: 8px;
+  }
+}
+.footer .footer_btn.ja {
+  font-size: 20px;
+}
+.footer .footer_btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #012f4e;
+  @include mobile {
+    width: 13px;
+    height: 13px;
+  }
+}
+.footer .footer_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 2px;
+  background: #012f4e;
+  transition: 0.3s;
+  @include mobile {
+    width: 9px;
+    left: 11px;
+  }
+}
+.footer .footer_btn:hover::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #012f4e;
+  left: 7px;
+  @include middle {
+    width: 7px;
+    height: 7px;
+    left: 5px;
+  }
+}
+.footer .copyright {
+  margin-top: 265px;
+  padding-right: 10%;
+  text-align: right;
+  @include middle {
+    margin-top: 50px;
+  }
+  @include mobile {
+    margin-top: 110px;
+  }
+}

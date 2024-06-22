@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>unoemi | contact | thanks</title>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="../android-chrome-192x192.png">
+    <meta name="description" content="unoemiへのお問い合わせを送付完了">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="pc_nav">
+            <div class="menu">menu</div>
+            <ul>
+                <li><a href="../index.html" class="menu_btn js_top">top</a></li>
+                <li><a href="../about/" class="menu_btn js_about">about</a></li>
+                <li><a href="../works/index.html" class="menu_btn js_works">works</a></li>
+                <li><a href="./contact.html" class="menu_btn js_contact">contact</a></li>
+            </ul>
+        </nav>
+        <div class="header_wrap">
+            <div>
+                <a href="../index.html">
+                    <h1>
+                        <img class="emiuno_logo" src="../images/unoemi_logo.png" alt="emiunoのロゴ">
+                    </h1>
+                </a>
+            </div>
+            <div class="pc_btn">menu<span></span></div>
+        </div>
+        <img class="header_img" src="../images/sub_header.png" alt="右上から左下に光が指す画像">
+        <img class="header_img_sp" src="../images/top_picture_sp.png" alt="右上から左下に光が指す画像">
+    </header>
+    <main>
+        <div class="contact js-in">
+            <div class="contact_title">
+                <div class="title_shape"></div>
+                <h2 class="title">Thank you.</h2>
+            </div>
+            <div class="thanks_wrap">
+                <img class="bluerose" src="../images/bluerose.svg" alt="">
+                <p>
+                    お問い合わせいただき誠にありがとうございます。<br>
+                    ご内容確認出来次第、ご連絡させていただきます。
+                </p>
+                <p>
+                    1週間以上レスポンスがない場合は、<br>
+                    恐れ入りますが、下記メールアドレスに
+                    <span>直接ご連絡いただければ幸いです。</span>
+                </p>
+                <div data-address="emiuno.design@gmail.com" class="mailaddress">
+                    <img class="mail_icon" src="../images/mail_icon.png" alt="">
+                    <address>emiuno.design@gmail.com</address>
+                </div>
+                <div class="success_msg">completed!</div>
+            </div>
+            <div class="totop">
+                <p class="hope">Wish your happiness.</p>
+                <img class="arrow" src="../images/arrow.png" alt="">
+                <img class="arrow_sp" src="../images/arrow_sp.png" alt="">
+                <a href="../index.html" class="contact_btn">
+                    <div class="btn_text">
+                        <div class="btn_text_en">TOP</div>
+                        <div>へ戻る</div>
+                    </div>
+                    <div class="btn_border"></div>
+                </a>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer_nav">
+            <a href="../index.html" class="footer_btn js_top">top</a>
+            <a href="../about/" class="footer_btn js_about">about</a>
+            <a href="../works/index.html" class="footer_btn js_works">works</a>
+            <a href="./contact.html" class="footer_btn js_contact">contact</a>
+        </div>
+        <div class="copyright">
+            <p>© 2024 uno emi</p>
+        </div>
+    </footer>
+    <script src="../js/script.js"></script>
+    <script>
+        $(function () {
+            $('.mailaddress').click(function () {
+                // data-addressの値を取得
+                const url = $(this).data('address');
+                // クリップボードにコピー
+                navigator.clipboard.writeText(url);
+                // フラッシュメッセージ表示
+                $('.success_msg').fadeIn("slow", function () {
+                    $(this).delay(2000).fadeOut("slow");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

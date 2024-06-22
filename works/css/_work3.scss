@@ -1,0 +1,149 @@
+// レスポンシブ対応
+// ブレイクポイント
+$mb: 767px;
+$tb: 834px;
+$md: 990px;
+$anm: 1100px;
+// @mediaのフォーマット
+@mixin mobile {
+  @media screen and (max-width: $mb) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: $tb) {
+    @content;
+  }
+}
+@mixin middle {
+  @media screen and (max-width: $md) {
+    @content;
+  }
+}
+@mixin animation {
+  @media screen and (max-width: $anm) {
+    @content;
+  }
+}
+
+// フォント
+$font-italiana: "Italiana", serif;
+$font-cambay: "Cambay", sans-serif;
+
+.preview {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 140px;
+}
+
+.pc_preview {
+  width: 58%;
+  @include mobile {
+    display: none;
+  }
+  .header_dum {
+    width: 100%;
+    height: 15px;
+    background: #012f4e;
+    position: relative;
+    border-radius: 5px 5px 0px 0px;
+    .btn_dum {
+      width: 7px;
+      height: 7px;
+      background: #6e889a;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      border-radius: 50%;
+    }
+    .btn_dum::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #6e889a;
+      position: absolute;
+      top: 0px;
+      left: 10px;
+      border-radius: 50%;
+    }
+    .btn_dum::after {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #6e889a;
+      position: absolute;
+      top: 0px;
+      left: 20px;
+      border-radius: 50%;
+    }
+  }
+  .pc_img {
+    width: 100%;
+    height: 363px;
+    border-radius: 0px 0px 0px 5px;
+    overflow-y: scroll;
+    img {
+      width: 100%;
+    }
+  }
+  .pc_img::-webkit-scrollbar {
+    width: 10px;
+  }
+  .pc_img::-webkit-scrollbar-track {
+    background-color: #f7e3da;
+    border-radius: 0px 0px 5px 0px;
+  }
+  .pc_img::-webkit-scrollbar-thumb {
+    background-color: #c1bcbd;
+    border-radius: 8px;
+  }
+}
+.pc_icon,
+.sp_icon {
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+  .pc_icon_img {
+    width: 37px;
+    margin-right: 10px;
+  }
+  .sp_icon_img {
+    width: 15px;
+    margin-right: 10px;
+  }
+}
+.sp_preview {
+  width: 24%;
+  @include mobile {
+    width: 100%;
+  }
+  .sp_dum {
+    width: 100%;
+    height: 15px;
+    background: #012f4e;
+    border-radius: 5px 5px 0px 0px;
+  }
+  .sp_img {
+    width: 100%;
+    height: 363px;
+    border-radius: 0px 0px 0px 5px;
+    overflow-y: scroll;
+    @include mobile {
+      height: 600px;
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .sp_img::-webkit-scrollbar {
+    width: 10px;
+  }
+  .sp_img::-webkit-scrollbar-track {
+    background-color: #f7e3da;
+    border-radius: 0px 0px 5px 0px;
+  }
+  .sp_img::-webkit-scrollbar-thumb {
+    background-color: #c1bcbd;
+    border-radius: 8px;
+  }
+}
